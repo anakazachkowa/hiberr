@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl extends Util implements UserDao {
-     public UserDaoJDBCImpl() {
+    public UserDaoJDBCImpl() {
 
     }
 
@@ -17,7 +17,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         String str = "CREATE TABLE IF NOT EXISTS users" +
                 "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(40), last_name VARCHAR(40), age INT)";
         try (Connection con = getConnection()) {
-           preparedStatement = con.prepareStatement(str);
+            preparedStatement = con.prepareStatement(str);
             preparedStatement.executeUpdate(str);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
         PreparedStatement preparedStatement = null;
-        String str  = "INSERT INTO users (name, last_name, age) VALUES (?, ?, ?)";
+        String str = "INSERT INTO users (name, last_name, age) VALUES (?, ?, ?)";
         try (Connection con = getConnection()) {
             preparedStatement = con.prepareStatement(str);
             preparedStatement.setString(1, name);
@@ -55,7 +55,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     public void removeUserById(long id) throws SQLException {
         String str = "DELETE FROM users WHERE id = ?";
         PreparedStatement preparedStatement = null;
-        try (Connection con = getConnection()){
+        try (Connection con = getConnection()) {
             preparedStatement = con.prepareStatement(str);
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
@@ -66,17 +66,18 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     public List<User> getAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
-        String str  = "SELECT * FROM users";
+        String str = "SELECT * FROM users";
         PreparedStatement preparedStatement = null;
         try (Connection con = getConnection()) {
             preparedStatement = con.prepareStatement(str);
             ResultSet resultSet = preparedStatement.executeQuery(str);
-                while (resultSet.next()) {
-                    User user = new User(resultSet.getString("name"),
-                            resultSet.getString("last_name"), resultSet.getByte("age"));
-                            user.setId(resultSet.getLong("id"));
-                            users.add(user);
-                }
+            while (resultSet.next()) {
+                User user = new User(resultSet.getString("name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getByte("age"));
+                user.setId(resultSet.getLong("id"));
+                users.add(user);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
