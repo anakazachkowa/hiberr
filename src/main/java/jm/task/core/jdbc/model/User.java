@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table (name = "sqitest")
+@Table (name = "user")
 public class User {
 
     @Id
@@ -15,7 +15,7 @@ public class User {
     @Column (name = "name")
     private String name;
 
-    @Column (name = "lastName")
+    @Column (name = "last_name")
     private String lastName;
 
     @Column (name = "age")

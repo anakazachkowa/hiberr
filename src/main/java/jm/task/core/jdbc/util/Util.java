@@ -21,6 +21,8 @@ public class Util {
     private static final String DO_USERNAME = "anakazachkowa";
     private static final String DO_PASSWORD = "am225588TM.";
 
+
+
     public Connection getConnection() {
         Connection connection = null;
         try {
@@ -72,43 +74,7 @@ public class Util {
     }
 }
 
-//    private static SessionFactory sessionFactory;
-//    public static SessionFactory getSessionFactory() {
-//        if (sessionFactory == null) {
-//            try {
-//                Configuration configuration = new Configuration();
-//
-//                // Hibernate settings equivalent to hibernate.cfg.xml's properties
-//                Properties settings = new Properties();
-//                settings.put(Environment.DRIVER, DO_DRIVER);
-//                settings.put(Environment.URL, DO_URL);
-//                settings.put(Environment.USER, DO_USERNAME);
-//                settings.put(Environment.PASS, DO_PASSWORD);
-//                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
-//
-//                settings.put(Environment.SHOW_SQL, "true");
-//
-//                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-//
-//                settings.put(Environment.HBM2DDL_AUTO, "");
-//
-//                configuration.setProperties(settings);
-//
-//                configuration.addAnnotatedClass(User.class);
-//
-//                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-//                        .applySettings(configuration.getProperties()).build();
-//
-//                sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return sessionFactory;
-//    }
-//}
 
-//
 
 
 
